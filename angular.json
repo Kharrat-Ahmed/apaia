@@ -11,15 +11,14 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/webapp-apaia",
+            "outputPath": "dist/Webapp-Apaia",  // Add this line
             "index": "src/index.html",
-            "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "aot": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -27,15 +26,11 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
+              "outputHashing": "all",
               "budgets": [
                 {
                   "type": "initial",
@@ -47,8 +42,7 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
-              ],
-              "outputHashing": "all"
+              ]
             },
             "development": {
               "optimization": false,
@@ -62,10 +56,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Webapp-Apaia:build:production"
+              "browserTarget": "Webapp-Apaia:build:production"
             },
             "development": {
-              "buildTarget": "Webapp-Apaia:build:development"
+              "browserTarget": "Webapp-Apaia:build:development"
             }
           },
           "defaultConfiguration": "development"
